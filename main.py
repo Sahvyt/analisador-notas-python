@@ -15,7 +15,7 @@ def ler_notas(nome_arquivo):
 
 def analisar_notas(alunos):
     if len(notas) == 0:
-    return 0, 0, 0, []
+        return 0, 0, 0, []
 
     notas = []
     aprovados = []
