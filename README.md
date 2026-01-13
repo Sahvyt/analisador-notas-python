@@ -23,3 +23,6 @@ Projeto simples em Python que lê um arquivo CSV com notas de alunos e gera esta
 - Organização básica de um projeto e documentação com README
 - Uso de tuplas para armazenar dados relacionados (nome e nota)
 - Refatoração simples para adicionar novas funcionalidades
+- Manipulação de caminhos de arquivos com os.path
+- Entendimento de diretório de execução (working directory)
+
