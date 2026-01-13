@@ -1,38 +1,51 @@
 def ler_notas(nome_arquivo):
-    notas = []
-    with open(nome_arquivo, 'r') as arquivo:
+    alunos = []
+
+    with open(nome_arquivo, 'r') as arquivo: #abre o arquivo com segurança
         linhas = arquivo.readlines()
 
-    for linha in linhas[1:]:  # pula o cabeçalho
+    for linha in linhas[1:]: #pula o cabeçalho
         partes = linha.strip().split(',')
         nome = partes[0]
         nota = float(partes[1])
+
+        alunos.append((nome, nota))
+        
+    return alunos
+
+def analisar_notas(alunos):
+    if len(notas) == 0:
+    return 0, 0, 0, []
+
+    notas = []
+    aprovados = []
+
+    for nome, nota in alunos:
         notas.append(nota)
+        if nota >= 6.0:
+            aprovados.append(nome)
 
-    return notas
-
-
-def analisar_notas(notas):
     media = sum(notas) / len(notas)
     maior = max(notas)
     menor = min(notas)
 
-    aprovados = 0
-    for nota in notas:
-        if nota >= 6.0:
-            aprovados += 1
-
     return media, maior, menor, aprovados
 
-
 def main():
-    notas = ler_notas('notas.csv')
-    media, maior, menor, aprovados = analisar_notas(notas)
+    arquivo = input("Digite o nome do arquivo CSV: ")
+    alunos = ler_notas(arquivo)
+
+    media, maior, menor, aprovados = analisar_notas(alunos)
 
     print(f"Média da turma: {media:.2f}")
     print(f"Maior nota: {maior}")
     print(f"Menor nota: {menor}")
-    print(f"Aprovados: {aprovados}")
+    print("Alunos aprovados:")
+    if len(aprovados) == 0:
+        print("Nenhum aluno aprovado.")
+    else:
+        for nome in aprovados:
+            print(f"- {nome}")
 
-
-main()
+if __name__ == '__main__':
+    main()
